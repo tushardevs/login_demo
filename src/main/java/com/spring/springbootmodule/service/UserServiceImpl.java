@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.spring.springbootmodule.model.Role;
-import com.spring.springbootmodule.model.User;
+import com.spring.springbootmodule.model.Admin;
 import com.spring.springbootmodule.repository.UserRepository;
 import com.spring.springbootmodule.web.dto.UserRegistrationDto;
 
@@ -27,12 +27,12 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public User findByEmail(String email) {
+    public Admin findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-    public User save(UserRegistrationDto registration) {
-        User user = new User();
+    public Admin save(UserRegistrationDto registration) {
+        Admin user = new Admin();
         user.setFirstName(registration.getFirstName());
         user.setLastName(registration.getLastName());
         user.setEmail(registration.getEmail());
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
+        Admin user = userRepository.findByEmail(email);
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }

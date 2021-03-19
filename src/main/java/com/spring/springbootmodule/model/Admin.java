@@ -5,7 +5,7 @@ import java.util.Collection;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User {
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,16 +25,16 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
     private Collection < Role > roles;
 
-    public User() {}
+    public Admin() {}
 
-    public User(String firstName, String lastName, String email, String password) {
+    public Admin(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
 
-    public User(String firstName, String lastName, String email, String password, Collection < Role > roles) {
+    public Admin(String firstName, String lastName, String email, String password, Collection < Role > roles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

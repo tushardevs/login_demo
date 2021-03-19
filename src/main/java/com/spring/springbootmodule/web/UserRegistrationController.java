@@ -1,6 +1,6 @@
 package com.spring.springbootmodule.web;
 
-import com.spring.springbootmodule.model.User;
+import com.spring.springbootmodule.model.Admin;
 import com.spring.springbootmodule.service.UserService;
 import com.spring.springbootmodule.web.dto.UserRegistrationDto;
 
@@ -35,7 +35,7 @@ public class UserRegistrationController {
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
                                       BindingResult result){
-        User existing = userService.findByEmail(userDto.getEmail());
+        Admin existing = userService.findByEmail(userDto.getEmail());
         if (existing != null) {
             result.rejectValue("email", null, "There is already an account registered with that email");
         }
